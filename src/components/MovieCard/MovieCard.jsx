@@ -5,7 +5,7 @@ export default function MovieCard({ movie }) {
     , poster_path, vote_average
     , overview
     , genres = [] } = movie
-  console.log(genres)
+
   const imgBaseUrl = 'https://image.tmdb.org/t/p/w500/';
   const imgUrl = imgBaseUrl.concat(poster_path);
   const genresList = genres

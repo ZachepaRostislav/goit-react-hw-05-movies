@@ -1,11 +1,10 @@
 import MovieList from "components/MovieList";
 import { useEffect, useState } from "react";
 import { fetchMovies } from "services/api"
+
+
 export default function Movies() {
-  // const movies = fetchMovies()
-  // useEffect(() => {
-  //   fetch!!!
-  // })
+
   const [movieName, setMovieName] = useState('');
   const [movies, setMovies] = useState([])
 
@@ -17,7 +16,6 @@ export default function Movies() {
 
   }
   useEffect(() => {
-
     fetchMovies(movieName).then(data => {
       const newMovies = data.results
       if (movieName === '') {

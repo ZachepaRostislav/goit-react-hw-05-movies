@@ -30,7 +30,7 @@ export const MovieCardDescription = styled.p`
   color: tomato;
 `
 
-export const MovieCardText = styled.p`
+export const MovieCardText = styled.span`
  font-weight: 300;
   letter-spacing: 0.05em;
 `
