@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom";
+import PropTypes from "prop-types";
 import { fetchCast } from "services/api";
 import { CastImg, CastItem, CastList, CastText } from "./Cast.styled";
 
@@ -29,3 +30,7 @@ export default function Cast() {
     </CastList>
   )
 }
+
+Cast.propTypes = {
+  movieId: PropTypes.string.isRequired,
+};

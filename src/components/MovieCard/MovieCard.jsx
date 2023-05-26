@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import { Block, MovieCardBlock, MovieCardDateRelease, MovieCardDescription, MovieCardImg, MovieCardName, MovieCardText } from "./MovieCard.styled";
 
 export default function MovieCard({ movie }) {
@@ -25,3 +26,19 @@ export default function MovieCard({ movie }) {
     </MovieCardBlock>
   )
 }
+
+
+MovieCard.propTypes = {
+  movie: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    release_date: PropTypes.string.isRequired,
+    poster_path: PropTypes.string,
+    vote_average: PropTypes.number.isRequired,
+    overview: PropTypes.string.isRequired,
+    genres: PropTypes.arrayOf(
+      PropTypes.shape({
+        name: PropTypes.string.isRequired
+      })
+    ).isRequired
+  }).isRequired
+};

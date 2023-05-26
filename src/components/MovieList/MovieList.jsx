@@ -1,4 +1,5 @@
 import { useLocation } from "react-router-dom"
+import PropTypes from "prop-types";
 import { MovieCatalog, MovieListImg, MovieListItem, MovieListNavLink, MovieListParagraph } from "./MovieList.styled";
 
 
@@ -20,3 +21,14 @@ export default function MovieList({ movies }) {
     </MovieCatalog >
   )
 }
+
+MovieList.propTypes = {
+  movies: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      original_name: PropTypes.string,
+      title: PropTypes.string.isRequired,
+      poster_path: PropTypes.string,
+    })
+  ).isRequired,
+};
