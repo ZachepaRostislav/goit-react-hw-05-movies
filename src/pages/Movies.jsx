@@ -1,30 +1,31 @@
 import MovieList from "components/MovieList";
 import { useEffect, useState } from "react";
+import { useSearchParams } from "react-router-dom";
 import { fetchMovies } from "services/api"
 
 
 export default function Movies() {
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [movies, setMovies] = useState([]);
+  const query = searchParams.get('query');
 
-  const [movieName, setMovieName] = useState('');
-  const [movies, setMovies] = useState([])
+  useEffect(() => {
+    fetchMovies(query).then(data => {
+      if (!query) {
+        return
+      }
+      setMovies(data.results);
+    })
+  }, [query])
 
   const handleSearchMovieName = (e) => {
     e.preventDefault()
-    const form = e.currentTarget
-    const input = form.elements.search.value
-    setMovieName(input)
-
+    const query = e.target.search.value.toLowerCase().trim()
+    if (!query) {
+      return
+    }
+    setSearchParams({ query })
   }
-  useEffect(() => {
-    fetchMovies(movieName).then(data => {
-      const newMovies = data.results
-      if (movieName === '') {
-        return
-      }
-
-      setMovies(prevMovies => [...prevMovies, ...newMovies]);
-    })
-  }, [movieName])
   return (
     <>
       <h1>Movies</h1>

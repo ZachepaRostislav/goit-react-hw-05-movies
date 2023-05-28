@@ -8,8 +8,7 @@ export default function Home() {
   useEffect(() => {
     fetchTrand()
       .then(data => {
-        const newTrandMovies = data.results
-        setTrandMovies(prevTrandMovies => ([...prevTrandMovies,...newTrandMovies]))
+        setTrandMovies(data.results)
       })
   },[])
   

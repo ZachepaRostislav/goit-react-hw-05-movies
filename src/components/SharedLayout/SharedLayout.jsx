@@ -17,9 +17,11 @@ export default function SharedLayout() {
           </ul>
         </nav>
       </header>
-      <Suspense fallback={null}>
-        <Outlet />
-      </Suspense>
+      <main>
+        <Suspense fallback={null}>
+          <Outlet />
+        </Suspense>
+      </main>
     </>
   )
 }

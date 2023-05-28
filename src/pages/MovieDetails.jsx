@@ -5,7 +5,7 @@ import { Link, NavLink, Outlet, useLocation, useParams } from 'react-router-dom'
 import { fetchDetails } from 'services/api';
 
 export default function MovieDetails() {
-  const [movieDetails, setMovieDetails] = useState({});
+  const [movieDetails, setMovieDetails] = useState(null);
   const { movieId } = useParams();
   const location = useLocation();
 
@@ -13,9 +13,7 @@ export default function MovieDetails() {
     fetchDetails(movieId)
       .then(data => {
         const newMovieDetailsData = data
-        setMovieDetails(prevMoviesDetails => ({
-          ...prevMoviesDetails, ...newMovieDetailsData
-        }))
+        setMovieDetails(newMovieDetailsData)
       })
   }, [movieId])
 
@@ -23,7 +21,7 @@ export default function MovieDetails() {
   return (
     <>
       <Link to={backLink}>Go Back</Link>
-      <MovieCard movie={movieDetails} />
+      {movieDetails && <MovieCard movie={{ ...movieDetails }} />}
       <div>
         <NavLink to='cast' state={{ from: backLink }}>Cast</NavLink>
       </div>

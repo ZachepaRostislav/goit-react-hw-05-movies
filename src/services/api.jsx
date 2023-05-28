@@ -17,9 +17,8 @@ export const fetchTrand = () => {
     })
 }
 
-export const fetchMovies = (movieName) => {
-
-  return fetch(`https://api.themoviedb.org/3/search/movie?include_adult=false&language=en-US&page=1&query=${movieName}`, options)
+export const fetchMovies = (query) => {
+  return fetch(`https://api.themoviedb.org/3/search/movie?include_adult=false&language=en-US&page=1&query=${query}`, options)
     .then(response => {
       if (!response.ok) {
         throw new Error(`error ${response.status}`);
