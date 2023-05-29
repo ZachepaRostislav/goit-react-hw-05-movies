@@ -9,7 +9,7 @@ export default function MovieCard({ movie }) {
     , genres = [] } = movie
   const imgBaseUrl = 'https://image.tmdb.org/t/p/w500';
   const imgUrl = imgBaseUrl.concat(poster_path);
-  const plug = "https://dummyimage.com/600x400/d9d9d9/fff.png";
+  const plug = "https://dummyimage.com/600x400/c800ff/0d0c09.png";
   const genresList = genres
     .map(genre => genre.name)
     .join(', ');

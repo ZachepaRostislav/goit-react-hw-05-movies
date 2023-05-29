@@ -10,10 +10,10 @@ export default function Movies() {
   const query = searchParams.get('query');
 
   useEffect(() => {
+    if (!query) {
+      return
+    }
     fetchMovies(query).then(data => {
-      if (!query) {
-        return
-      }
       setMovies(data.results);
     })
   }, [query])

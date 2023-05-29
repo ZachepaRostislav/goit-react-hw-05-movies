@@ -6,7 +6,7 @@ import { MovieCatalog, MovieListImg, MovieListItem, MovieListNavLink, MovieListP
 export default function MovieList({ movies }) {
   const location = useLocation()
   const imgBaseUrl = 'https://image.tmdb.org/t/p/w500/';
-  const plug = "https://dummyimage.com/600x400/d9d9d9/fff.png";
+  const plug = "https://dummyimage.com/600x400/c800ff/0d0c09.png";
 
   return (
     <MovieCatalog>
@@ -14,9 +14,11 @@ export default function MovieList({ movies }) {
       {movies.map(({ id, original_name, title, poster_path }) => (
         <MovieListItem key={id} >
           <MovieListNavLink to={`/movies/${id}`} state={{ from: location }}>
-            <MovieListParagraph> {original_name ?? title}</MovieListParagraph></MovieListNavLink>
-          <MovieListImg src={poster_path ?
-            imgBaseUrl.concat(poster_path) : plug} alt={original_name ?? title} />
+            <MovieListParagraph> {original_name ?? title}</MovieListParagraph>
+            <MovieListImg src={poster_path ?
+              imgBaseUrl.concat(poster_path) : plug} alt={original_name ?? title} />
+          </MovieListNavLink>
+
         </MovieListItem>
       ))
 
